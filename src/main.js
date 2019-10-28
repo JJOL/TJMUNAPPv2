@@ -38,3 +38,18 @@ app.on('activate', () => {
         createWindow();
     }
 })
+
+
+
+const { ipcMain } = electron;
+
+ipcMain.on('goto-view', (event, viewArg) => {
+    console.log("Receiving Event GoTo");
+    
+    if (viewArg === 'config') {
+        win.loadFile('views/config/index.html');
+    }
+    else if (viewArg === 'menu') {
+        win.loadFile('views/menu/index.html');
+    }
+})
