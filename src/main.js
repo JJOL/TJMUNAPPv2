@@ -10,7 +10,8 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            allowRunningInsecureContent: false
         }
     });
 
@@ -26,13 +27,11 @@ function createWindow() {
 }
 
 app.on('ready', createWindow);
-
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
     }
 })
-
 app.on('activate', () => {
     if (win === null) {
         createWindow();
@@ -40,16 +39,14 @@ app.on('activate', () => {
 })
 
 
-
+// IPC EVENTS
 const { ipcMain } = electron;
 
+// View Transition
 ipcMain.on('goto-view', (event, viewArg) => {
-    console.log("Receiving Event GoTo");
-    
-    if (viewArg === 'config') {
-        win.loadFile('views/config/index.html');
-    }
-    else if (viewArg === 'menu') {
-        win.loadFile('views/menu/index.html');
-    }
+    console.log(`Receiving Event goto-view(${viewArg})`);
+    win.loadFile(`views/${viewArg}/index.html`);
 })
+
+
+require('./languages')

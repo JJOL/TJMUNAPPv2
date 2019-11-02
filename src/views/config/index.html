@@ -14,8 +14,21 @@
             text-decoration: underline;
         }
 
-        .language img {
+
+        .labeled-img {
+            text-align: center;
+        }
+        .labeled-img img {
             width: 56px;
+        }
+
+
+        .language {   
+        }
+
+        .language:hover:not([disabled]) {
+            background: rgba(200, 200, 200, 0.5);
+            cursor: pointer;
         }
 
         #back-btn {
@@ -29,6 +42,18 @@
             color: white;
             cursor: pointer;
         }
+
+
+        #load-delegates-btn {
+            margin-bottom: 30px;
+        }
+
+        .delegate-name {
+            display: block;
+            overflow: hidden;
+            width: 100%;
+            white-space: pre;
+        }
     </style>
 
     <title>TJMUNv2</title>
@@ -40,10 +65,21 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2>Languages</h2>
+                <h2 data-strname="lock_title">Lock Settings</h2>
+                <div id="lock-controls">
+                    <span data-strname="lock_password_label">Password: </span>
+                    <input type="text" id="lock-input">
+                    <button class="btn btn-light" id="lock-btn">Lock</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 data-strname="languages_title">Languages</h2>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-2 language">
+                    <!-- Languages Container  -->
+                    <div class="row" id="language-container">
+                        <!-- <div class="col-2 language img-lbl" id="Spanish">
                             <img src="../common/assets/mexican_small.jpg" alt="">
                             <span>Spanish</span>
                         </div>
@@ -51,7 +87,7 @@
                         <div class="col-2 language">
                             <img src="../common/assets/united_states_small.jpg" alt="">
                             <span>English</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -59,18 +95,50 @@
 
         <div class="row">
             <div class="col-12">
-                <h2>Delegates & Flags</h2>
+                <h2 data-strname="delegates_title">Delegates & Flags</h2>
+                <button class="btn btn-light" id="load-delegates-btn" data-strname="delegates_load_btn">Load Delegates Folder</button>
                 <div class="container">
-                    
+                    <div class="row" id="delegates-container">
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <h2>Sessions</h2>
-                <div class="container">
-                    
+                <h2 data-strname="sessions_title">Sessions</h2>
+                <div>
+                    <table class="table" class="session-container">
+                        <tbody>
+                        <tr>
+                            <td>Add New</td>
+                            <td>
+                                <label for="session-name" data-strname="session_add_name_label">Name:</label>
+                                <input type="text" name="session-name" id="session-add-name-input">
+                            </td>
+                            <td>
+                                <label for="session-format" data-strname="session_add_format_label">Format:</label>
+                                <select name="session-format" id="session-add-format-input" >
+                                    <option value="UN">UN</option>
+                                    <option value="OAS">OAS</option>
+                                </select>
+                            </td>
+                            <td><button class="btn btn-success" id="session-add-btn" data-strname="session_add_btn">Add</button></td>
+                        </tr>
+                        <!-- <tr>
+                            <td><span style="background: darkgreen; color: white; padding: 5px; border-radius: 5px; font-weight: bold;">Active</span></td>
+                            <td>Name: UN</td>
+                            <td>Format: UN</td>
+                            <td><button class="btn btn-danger">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td><span style="background: darkgreen; color: white; padding: 5px; border-radius: 5px; font-weight: bold; visibility: hidden;">Active</span></td>
+                            <td>Name: OAS Crime and Terrorism</td>
+                            <td>Format: OAS</td>
+                            <td><button class="btn btn-danger">Delete</button></td>
+                        </tr> -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

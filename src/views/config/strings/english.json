@@ -1,0 +1,11 @@
+{
+    "lock_title": "Lock Settings",
+    "languages_title": "Language",
+    "delegates_title": "Delegates & Flags",
+    "sessions_title": "Sessions",
+    "lock_password_label": "Password: ",
+    "delegates_load_btn": "Load Delegates",
+    "session_add_name_label": "Name: ",
+    "session_add_format_label": "Format: ",
+    "session_add_btn": "Add"
+}
