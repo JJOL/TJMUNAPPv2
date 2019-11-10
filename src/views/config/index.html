@@ -54,6 +54,14 @@
             width: 100%;
             white-space: pre;
         }
+
+        .active-mark {
+            background: darkgreen;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
     </style>
 
     <title>TJMUNv2</title>
@@ -64,17 +72,17 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" id="lock-component">
                 <h2 data-strname="lock_title">Lock Settings</h2>
                 <div id="lock-controls">
                     <span data-strname="lock_password_label">Password: </span>
-                    <input type="text" id="lock-input">
+                    <input type="password" id="lock-input">
                     <button class="btn btn-light" id="lock-btn">Lock</button>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" id="language-component">
                 <h2 data-strname="languages_title">Languages</h2>
                 <div class="container">
                     <!-- Languages Container  -->
@@ -109,7 +117,7 @@
                 <h2 data-strname="sessions_title">Sessions</h2>
                 <div>
                     <table class="table" class="session-container">
-                        <tbody>
+                        <tbody id="session-container">
                         <tr>
                             <td>Add New</td>
                             <td>
@@ -126,7 +134,7 @@
                             <td><button class="btn btn-success" id="session-add-btn" data-strname="session_add_btn">Add</button></td>
                         </tr>
                         <!-- <tr>
-                            <td><span style="background: darkgreen; color: white; padding: 5px; border-radius: 5px; font-weight: bold;">Active</span></td>
+                            <td><span style="">Active</span></td>
                             <td>Name: UN</td>
                             <td>Format: UN</td>
                             <td><button class="btn btn-danger">Delete</button></td>
@@ -144,5 +152,10 @@
         </div>
     </div>
     <script src="config.js"></script>
+    <script>
+        (function(){
+            init();
+        })();
+    </script>
 </body>
 </html>

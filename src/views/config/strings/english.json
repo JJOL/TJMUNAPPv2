@@ -4,8 +4,11 @@
     "delegates_title": "Delegates & Flags",
     "sessions_title": "Sessions",
     "lock_password_label": "Password: ",
+    "lock_lock_btn": "Lock",
+    "lock_unlock_btn": "UnLock",
     "delegates_load_btn": "Load Delegates",
     "session_add_name_label": "Name: ",
     "session_add_format_label": "Format: ",
-    "session_add_btn": "Add"
+    "session_add_btn": "Add",
+    "session_active": "Active"
 }
