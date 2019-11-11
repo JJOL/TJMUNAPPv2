@@ -18,7 +18,7 @@ function createWindow() {
     win.loadFile('views/menu/index.html');
 
     // Open DevTools
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     win.on('closed', () => {
         win = null;

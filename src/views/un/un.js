@@ -520,3 +520,16 @@ function onWarnSR(result) {
     console.log(result);
 }
 prepareCountrySearcher('#w-country-searcher', onWarnSR);
+
+
+
+
+
+
+
+
+
+
+function init () {
+
+}
