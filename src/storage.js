@@ -16,9 +16,14 @@ function getStorageObj(key, def) {
     return JSON.parse(getStorageElement(key, null)) || def;
 }
 
+function removeStorageItem(key) {
+    localStorage.removeItem(key);
+}
+
 module.exports = {
     get: getStorageElement,
     getObj: getStorageObj,
     set: setStorageElement,
-    setObj: setStorageObj
+    setObj: setStorageObj,
+    remove: removeStorageItem
 }

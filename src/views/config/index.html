@@ -102,7 +102,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-12"  id="delegates-component">
                 <h2 data-strname="delegates_title">Delegates & Flags</h2>
                 <button class="btn btn-light" id="load-delegates-btn" data-strname="delegates_load_btn">Load Delegates Folder</button>
                 <div class="container">
@@ -113,26 +113,29 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" id="sessions-component">
                 <h2 data-strname="sessions_title">Sessions</h2>
                 <div>
                     <table class="table" class="session-container">
+                        <thead>
+                            <tr>
+                                    <td>Add New</td>
+                                    <td>
+                                        <label for="session-name" data-strname="session_add_name_label">Name:</label>
+                                        <input type="text" name="session-name" id="session-add-name-input">
+                                    </td>
+                                    <td>
+                                        <label for="session-format" data-strname="session_add_format_label">Format:</label>
+                                        <select name="session-format" id="session-add-format-input" >
+                                            <option value="UN">UN</option>
+                                            <option value="OAS">OAS</option>
+                                        </select>
+                                    </td>
+                                    <td><button class="btn btn-success" id="session-add-btn" data-strname="session_add_btn">Add</button></td>
+                                </tr>
+                        </thead>
                         <tbody id="session-container">
-                        <tr>
-                            <td>Add New</td>
-                            <td>
-                                <label for="session-name" data-strname="session_add_name_label">Name:</label>
-                                <input type="text" name="session-name" id="session-add-name-input">
-                            </td>
-                            <td>
-                                <label for="session-format" data-strname="session_add_format_label">Format:</label>
-                                <select name="session-format" id="session-add-format-input" >
-                                    <option value="UN">UN</option>
-                                    <option value="OAS">OAS</option>
-                                </select>
-                            </td>
-                            <td><button class="btn btn-success" id="session-add-btn" data-strname="session_add_btn">Add</button></td>
-                        </tr>
+                        
                         <!-- <tr>
                             <td><span style="">Active</span></td>
                             <td>Name: UN</td>
