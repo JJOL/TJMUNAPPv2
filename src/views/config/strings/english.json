@@ -10,5 +10,7 @@
     "session_add_name_label": "Name: ",
     "session_add_format_label": "Format: ",
     "session_add_btn": "Add",
-    "session_active": "Active"
+    "session_active": "Active",
+    "session_delete_btn": "Delete",
+    "session_active_btn": "Set Active"
 }

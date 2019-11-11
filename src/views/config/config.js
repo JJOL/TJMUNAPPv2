@@ -1,17 +1,4 @@
-
-// const { ipcRenderer } = require('electron');
-
-// function renderSessions(sessions, language) {
-//     let html = '';
-//     for (let delegate of delegates) {
-//         html += `<tr>` +
-//                 `<td><span class="active-mark" enabled data-strname="session_active">Active</span></td>` +
-//                 `<td><span class="active-mark" enabled data-strname="session_active">Active</span></td>` +
-
-//                 `</tr>`;
-//     }
-//     sessionContainer.innerHTML = html;
-// }
+const { ipcRenderer } = require('electron');
 
 const storage  = require('../../storage');
 const Language = require('../../languages');
@@ -32,6 +19,7 @@ function init() {
     langCont    = new LanguageComponent('#language-component', locked, language);
     delegCont   = new DelegatesComponent('#delegates-component', locked, language);
     sessionCont = new SessionsComponent('#sessions-component', locked, language);
+    let backBtn = document.getElementById('back-btn');
 
     // Bind Listeners
     lockCont.setOnLockChange((locked) => {
@@ -46,5 +34,9 @@ function init() {
         langCont.setLang(lang);
         delegCont.setLang(lang);
         sessionCont.setLang(lang);
+    });
+
+    backBtn.addEventListener('click', () => {
+        ipcRenderer.send('goto-view', 'menu');
     });
 }

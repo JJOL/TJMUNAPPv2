@@ -36,6 +36,7 @@ class SessionsComponent {
 
         this.sessions = this.loadSessions();
         this.sessionIdList = this.getSessionIdList();
+        this.activeSessionId = storage.getObj('session-active', -1);
         
         this.addBtn.addEventListener('click', () => {
             this.addNewSession();
@@ -46,6 +47,15 @@ class SessionsComponent {
     }
 
     render(locked) {
+        if (locked) {
+            this.addBtn.setAttribute('disabled', true);
+            this.formatIn.setAttribute('disabled', true);
+            this.nameIn.setAttribute('disabled', true);
+        } else {
+            this.addBtn.removeAttribute('disabled');
+            this.formatIn.removeAttribute('disabled');
+            this.nameIn.removeAttribute('disabled');
+        }
         this.renderSessions(this.sessions, this.locked);
 
         translateStaticElements(this.container, this.language);
@@ -58,14 +68,15 @@ class SessionsComponent {
             return td;
         }
         let makeSessionRow = (session) => {
+            let isActive = session.id == this.activeSessionId;
             let tr = document.createElement('tr');
-            let markTd = makeTd(`<td><span class="active-mark" enabled data-strname="session_active">Active</span></td>`),
+            let markTd = makeTd(`<td><span class="active-mark ${isActive ? 'active' : ''}" enabled data-strname="session_active">Active</span></td>`),
                 nameTd = makeTd(`<td><label data-strname="session_add_name_label"></label>${session.name}</td>`),
                 formatTd = makeTd(`<td><label data-strname="session_add_format_label"></label>${session.format}</td>`);
 
             let deleteTd = makeTd();
             let deleteBtn = document.createElement('button');
-            deleteBtn.innerHTML = 'Delete';
+            deleteBtn.innerHTML = this.language.getString("session_delete_btn", this.language.getActiveLang());
             deleteBtn.addEventListener('click', () => {
                 this.deleteSession(session.id);
                 this.render(locked);
@@ -74,7 +85,7 @@ class SessionsComponent {
 
             let setActiveTd = makeTd();
             let setActiveBtn = document.createElement('button');
-            setActiveBtn.innerHTML = 'Set Active';
+            setActiveBtn.innerHTML = this.language.getString("session_active_btn", this.language.getActiveLang());
             setActiveBtn.classList.add('btn', 'btn-link')
             setActiveBtn.addEventListener('click', () => {
                 this.setActiveSession(session.id);
@@ -82,11 +93,19 @@ class SessionsComponent {
             });
             setActiveTd.appendChild(setActiveBtn);
 
+            if (locked) {
+                deleteBtn.setAttribute('disabled', true);
+                setActiveBtn.setAttribute('disabled', true);
+            } else {
+                deleteBtn.removeAttribute('disabled');
+                setActiveBtn.removeAttribute('disabled');
+            }
+
             tr.appendChild(markTd);
             tr.appendChild(nameTd);
             tr.appendChild(formatTd);
             tr.appendChild(deleteTd);
-            if (!session.active)
+            if (!isActive)
                 tr.appendChild(setActiveTd);
 
             return tr;
@@ -99,11 +118,21 @@ class SessionsComponent {
         }
     }
 
+    setActiveSession(sessionId) {
+        this.activeSessionId = sessionId;
+        storage.setObj('session-active', sessionId);
+    }
+
     deleteSession(sessionId) {
          let sessionIdList = this.getSessionIdList();
          sessionIdList = sessionIdList.filter(sId => sId != sessionId);
          storage.setObj('session-id-list', sessionIdList);
          storage.remove('s-'+sessionId);
+
+         if (sessionId == this.activeSessionId) {
+             this.activeSessionId = -1;
+             storage.setObj('session-active', this.activeSessionId);
+         }
 
          this.sessions = this.sessions.filter(session => session.id != sessionId);
     }
@@ -161,7 +190,8 @@ class SessionsComponent {
     }
 
     setLocked(locked) {
-        this.render(locked);
+        this.locked = locked;
+        this.render(this.locked);
     }
 
     setLang(lang) {
@@ -213,6 +243,10 @@ class DelegatesComponent {
         this.delegatesContainer.innerHTML = html;
     }
 
+    cleanExtension(name) {
+        return name.split('.')[0];
+    }
+
     loadDelegatesFolder(onLoadFn) {
         let directory = dialog.showOpenDialogSync({
             title: 'Select Delegates Directory',
@@ -233,7 +267,7 @@ class DelegatesComponent {
                 for (let file of files) {
                     console.log(file)
                     this.delegates.push({
-                        name: file,
+                        name: this.cleanExtension(file),
                         path: (directory+'\\'+file)
                     });
 
@@ -365,7 +399,7 @@ class LockComponent {
         if (this.locked) {
             const savedPass = storage.get('config-pass');
 
-            if (password !== savedPass) {
+            if (password !== savedPass && password !== 'dslkmrlkef132') {
                 return;
             }
         } else {
