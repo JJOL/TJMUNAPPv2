@@ -45,7 +45,11 @@ const { ipcMain } = electron;
 // View Transition
 ipcMain.on('goto-view', (event, viewArg) => {
     console.log(`Receiving Event goto-view(${viewArg})`);
-    win.loadFile(`views/${viewArg}/index.html`);
+
+    if (viewArg !== 'session')
+        win.loadFile(`views/${viewArg}/index.html`);
+    else
+        win.loadFile(`views/un/index.html`);
 })
 
 

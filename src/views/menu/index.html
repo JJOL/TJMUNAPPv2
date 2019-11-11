@@ -45,7 +45,15 @@
       margin: 0 auto;
     }
 
-    #resume-btn:hover {
+    #resume-btn[disabled] {
+      background-color: rgba(8, 70, 136, 0.3);
+      color: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+=    }
+
+    #resume-btn:hover:not([disabled]) {
       background-color: rgb(48, 117, 190);
       cursor: pointer;
     }
@@ -71,5 +79,8 @@
     </div>
     
     <script src="menu.js"></script>
+    <script>
+      init();
+    </script>
 </body>
 </html>
