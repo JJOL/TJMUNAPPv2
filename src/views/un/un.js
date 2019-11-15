@@ -56,6 +56,13 @@ var participants = [
 
 
 // Main Time Controls And Listeners
+class TimerComponent {
+    constructor(elId, language, defaultTime) {
+
+    }
+}
+
+
 let currHrs, currMins;
 let going = false;
 $('#time-set-btn').click(applyDefTime);
@@ -527,9 +534,39 @@ prepareCountrySearcher('#w-country-searcher', onWarnSR);
 
 
 
+const storage  = require('../../storage');
+const Language = require('../../languages');
+const language = new Language(__dirname);
 
-
+let timerCont, searcherCont, speakerListCont, titleCont, chairsCont, stateCont;
 
 function init () {
+    let delegates = storage.getObj('delegates-list', []);
+    let unsession = storage.getObj('s-'+sId+'-data', {});
+    let meta      = storage.getObj('s-'+sId, {});
+
+
+    // Speaker List and Timer
+    timerCont = new TimerComponent('timer-component', language, unsession.defaultTime);
+    searcherCont = new SearcherComponent('searcher-component', language, delegates);
+    speakerListCont = new SpeakerListComponent('speakerList-component', language, unsession.savedSpeakers);
+
+    // Info
+    titleCont  = new MultiLabelInComponent('title-component', language, meta.name);
+    chairsCont = new MultiLabelInComponent('chairs-component', language, unsession.chairs);
+    stateCont  = new SessionStateComponent('sessionState-component', language, unsession.state);
+
+    // Warnings
+    warningsCont = new WarningsComponent('warnings-component', language, delegates);
+
+
+    searcherCont.onItemSelected((item) => {
+        speakerListCont.queue(item);
+    });
+
+    timerCont.onTimerEnd(() => {
+        // speakerListCont.automaticForward();
+    });
+
 
 }

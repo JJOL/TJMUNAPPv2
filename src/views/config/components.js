@@ -208,6 +208,7 @@ class DelegatesComponent {
         this.locked = locked;
 
         this.delegates = storage.getObj('delegates-list', []);
+        storage.setObj('delegates-activated', this.delegates);
 
         this.loadBtn.addEventListener('click', () => {
             if (!this.locked) {
@@ -276,6 +277,8 @@ class DelegatesComponent {
                 }
 
                 storage.setObj('delegates-list', this.delegates);
+                storage.setObj('delegates-activated', this.delegates);
+                
                 onLoadFn();
             })
         } else {

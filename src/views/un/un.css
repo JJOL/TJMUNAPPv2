@@ -4,6 +4,14 @@ div {
     border: 1px dashed #AAA;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    text-align: center;
+}
+
 #page-container {
     padding-top: 5%;
     padding-bottom: 5%;
@@ -42,4 +50,8 @@ div {
 
 .curr-speaker {
     background-color: #ccc;
+}
+
+.info-box, .state-box {
+    text-align: center;
 }
