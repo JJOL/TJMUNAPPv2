@@ -1,5 +1,9 @@
 {
     "timer_start_btn": "Iniciar",
     "timer_stop_btn": "Parar",
-    "timer_set_btn": "Establecer"
+    "timer_set_btn": "Establecer",
+    "speakerlist_add_btn": "Añadir",
+    "speakerlist_clear_btn": "Limpiar",
+    "speakerlist_next_btn": "Siguiente",
+    "speakerlist_back_btn": "Atras"
 }

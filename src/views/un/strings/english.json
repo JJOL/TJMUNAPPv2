@@ -1,5 +1,9 @@
 {
     "timer_start_btn": "Start",
     "timer_stop_btn": "Stop",
-    "timer_set_btn": "Set"
+    "timer_set_btn": "Set",
+    "speakerlist_add_btn": "Add",
+    "speakerlist_clear_btn": "Clear",
+    "speakerlist_next_btn": "Next",
+    "speakerlist_back_btn": "Back"
 }

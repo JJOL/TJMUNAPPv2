@@ -270,47 +270,47 @@
 
 
 
-// /* SEARCH BOX */
-// /*
-// var searchCont = $('#country-searcher');
-// var searchIn = searchCont.find('#search-in');
-// var searchList = searchCont.find('#search-list');
+/* SEARCH BOX */
+/*
+var searchCont = $('#country-searcher');
+var searchIn = searchCont.find('#search-in');
+var searchList = searchCont.find('#search-list');
 
-// var optionList = ['Belgium', 'Belize', 'Bogota', 'Buenos Aires', 'Camerun', 'Cancun', 'Costa Rica', 'Gina', 'Genebre', 'Luxemburgo', 'Mexico', 'Nicaragua', 'Norwai'];
+var optionList = ['Belgium', 'Belize', 'Bogota', 'Buenos Aires', 'Camerun', 'Cancun', 'Costa Rica', 'Gina', 'Genebre', 'Luxemburgo', 'Mexico', 'Nicaragua', 'Norwai'];
 
-// searchIn.on('input', processInput);
+searchIn.on('input', processInput);
 
-// function processInput() {
-//     var pattern = searchIn.val().toLowerCase();
-//     var results = [];
+function processInput() {
+    var pattern = searchIn.val().toLowerCase();
+    var results = [];
 
-//     for (var i = 0; i < optionList.length; i++) {
-//         if (optionList[i].toLocaleLowerCase().indexOf(pattern) !== -1) {
-//             results.push(optionList[i]);
-//         }
-//     }
+    for (var i = 0; i < optionList.length; i++) {
+        if (optionList[i].toLocaleLowerCase().indexOf(pattern) !== -1) {
+            results.push(optionList[i]);
+        }
+    }
 
-//     results = results.sort();
+    results = results.sort();
 
-//     displayResults(results);
-// }
+    displayResults(results);
+}
 
-// function displayResults(results) {
-//     var htmlStr = '';
-//     for (var i=0; i < results.length; i++) {
-//         htmlStr += '<li onclick="onResultSelected(\''+results[i]+'\')">'
-//                  +   results[i]
-//                  + '</li>';
-//     }
-//     searchList.html(htmlStr);
-// }
-// */
+function displayResults(results) {
+    var htmlStr = '';
+    for (var i=0; i < results.length; i++) {
+        htmlStr += '<li onclick="onResultSelected(\''+results[i]+'\')">'
+                 +   results[i]
+                 + '</li>';
+    }
+    searchList.html(htmlStr);
+}
+*/
 
-// /**
-//  * function matchingResults(pattern, list)
-//  * Search the string @pattern within the @list elements ignoring
-//  * case sensitivity.
-//  */
+/**
+ * function matchingResults(pattern, list)
+ * Search the string @pattern within the @list elements ignoring
+ * case sensitivity.
+ */
 // function matchingResults(pattern, list) {
 //     var results = [];
 //     pattern = pattern.toLocaleLowerCase();
@@ -549,7 +549,7 @@ function init () {
     // Speaker List and Timer
     imageFlagCont = new ImageFlagComponent('#flagImg-component', UN_FLAG_IMG_PATH, unsession.imgFlagPath)
     timerCont = new TimerComponent('#timer-component', language, unsession.defaultTime);
-    speakerListCont = new SpeakerListComponent('speakerList-component', language, delegates, unsession.savedSpeakers);
+    speakerListCont = new SpeakerListComponent('#speakerList-component', language, delegates, unsession.savedSpeakers);
 
     // Info
     // titleCont  = new TitleComponent('title-component', language, meta.name);
@@ -565,9 +565,20 @@ function init () {
         storage.setObj('s-'+sId+'-data', unsession);
     });
 
-    // speakerListCont.onCurrentSpeakerChanged((delegate) => {
-    //     imageFlagCont.setCurrentImage(delegate.path);
-    // });
+    speakerListCont.onCurrentSpeakerChanged((delegate) => {
+        console.log(delegate);
+        
+        if (delegate) {
+            imageFlagCont.setCurrentImage(delegate.path);
+        } else {
+            imageFlagCont.setCurrentImage(null);
+        }
+    });
+
+    speakerListCont.onSpeakerListChanged((speakers) => {
+        unsession.savedSpeakers = speakers;
+        storage.setObj('s-'+sId+'-data', unsession);
+    });
 
     // topicsCont.onInfoChange((newInfo) => {
     //     unsession.topics = newInfo;

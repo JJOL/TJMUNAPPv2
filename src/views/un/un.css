@@ -8,6 +8,10 @@ div {
     /* border: 1px dashed #AAA; */
 }
 
+.scrollable {
+    overflow-y: scroll;
+}
+
 #back-btn {
     display: inline-block;
     color: rgb(189, 189, 189);
@@ -96,17 +100,24 @@ li {
 }
 
 
-#speaker-list-component {
+#speakerList-component {
     /* display: flex;
     flex-flow: column; */
     /* flex-grow: 1; */
     flex: 1 1 auto;
 }
-
-#add-searcher-container {
-    height: 200px;
-    overflow-y: scroll;
+#speakerList-component .panel {
+    height: 100%;
+    display: none;
 }
+#speakerList-component .panel.active {
+    display: block;
+}
+
+#speakerList-component ol li.active {
+    background: #7dacf4;
+}
+
 
 .curr-speaker {
     background-color: #ccc;

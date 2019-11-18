@@ -35,32 +35,31 @@
 
 
                 <!-- UN Speaker List -->
-                <div id="speaker-list-component" class="ui-component">
-                    <div id="speaker-list">
-                        <ul class="list-group" id="speaker-list">
-                            <li class="list-group-item">sadas</li>
-                            <li class="list-group-item">Noruega</li>
+                <div id="speakerList-component" class="ui-component">
+                    <div id="speaker-list-container" class="panel active">
+                        <ol class="list-group scrollable" id="speaker-list">
                             <li class="list-group-item">Oceania</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                    </div>
-                    <div id="add-searcher-container">
-                        <ul class="list-group" id="search-results">
-                            <li class="list-group-item">Mexico</li>
-                            <li class="list-group-item">Mexico</li>
-                            <li class="list-group-item">Mexico</li>
-                            <li class="list-group-item">Mexico</li>
-                            <li class="list-group-item">Mexico</li>
                             <li class="list-group-item">Noruega</li>
-                            <li class="list-group-item">Oceania</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
+                        </ol>
+                        <div class='action-controls'>
+                            <button data-strname="speakerlist_add_btn" id='sp-add-btn'>Add</button>
+                            <button data-strname="speakerlist_clear_btn" id='sp-clear-btn'>Clear</button>
+                            <button data-strname="speakerlist_next_btn" id='sp-next-btn'>Next</button>
+                        </div>
                     </div>
-                    <button onclick="backwardCurrent()">Backward</button>
-                    <button onclick="resetCurrent()">Reset</button>
-                    <button onclick="forwardCurrent()">Forward</button>
+                    <div id="add-searcher-container" class="panel">
+                        <div class="input-group margin-bottom-sm">
+                            <input id="sp-input" class="form-control" type="text" placeholder="&#xf002; Search" style="font-family:Arial, FontAwesome">
+                        </div>
+                        <ul class="list-group scrollable" id="search-results">
+                            <!-- <li class="list-group-item">Mexico</li>
+                            <li class="list-group-item">Noruega</li>
+                            <li class="list-group-item">Oceania</li> -->
+                        </ul>
+                        <div class='action-controls'>
+                            <button data-strname="speakerlist_back_btn" id='sp-back-btn'>Back</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
