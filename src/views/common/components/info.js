@@ -66,7 +66,7 @@ class MultiLabelInfoComponent {
 
             btnEl.addEventListener('click', () => {
                 this.items.splice(inIndex, 1);
-                this.renderBack();
+                this.render();
             });
 
             el.appendChild(inpEl);
@@ -75,9 +75,15 @@ class MultiLabelInfoComponent {
         }
     }
 
+    render() {
+        this.renderFront();
+        this.renderBack();
+        translateStaticElements(this.container, this.language);
+    }
+
     addItemInput() {
         this.items.push('');
-        this.renderBack();
+        this.render();
     }
 
     openInput() {
@@ -85,7 +91,7 @@ class MultiLabelInfoComponent {
         this.frontCont.style.display = 'none';
         this.isOpen = true;
 
-        this.renderBack();
+        this.render();
     }
 
     closeInput() {
@@ -102,7 +108,7 @@ class MultiLabelInfoComponent {
             this.fn(this.items);
         }
 
-        this.renderFront();
+        this.render();
     }
 
     onInfoChange(fn) {

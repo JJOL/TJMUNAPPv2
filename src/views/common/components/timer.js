@@ -105,6 +105,9 @@ class TimerComponent {
         if (currTime.mins == 0 && currTime.secs == 0) {
             // End Of Timer!!
             this.stopTimer();
+            this.onTimerEnd();
+            this.startBtn.removeAttribute('disabled');
+            this.stopBtn.setAttribute('disabled', true);
             return;
         }
 
@@ -116,11 +119,11 @@ class TimerComponent {
             currTime.secs = 59;
         }
 
-        if (currTime.mins == 0 && currTime.secs == 0) {
-            // End Of Timer!!
-            this.stopTimer();
-            this.onTimerEnd();
-        }
+        // if (currTime.mins == 0 && currTime.secs == 0) {
+        //     // End Of Timer!!
+        //     this.stopTimer();
+        //     this.onTimerEnd();
+        // }
 
         this.renderCounter();
     }

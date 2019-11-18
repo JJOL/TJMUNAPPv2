@@ -5,5 +5,7 @@
     "speakerlist_add_btn": "Añadir",
     "speakerlist_clear_btn": "Limpiar",
     "speakerlist_next_btn": "Siguiente",
-    "speakerlist_back_btn": "Atras"
+    "speakerlist_back_btn": "Atras",
+    "topics_title": "Temas",
+    "chairs_title": "Moderadores"
 }
