@@ -12,5 +12,7 @@
     "state_draft_resolution": "Draft Resolution",
     "state_moderated_caucus": "Moderated Caucus",
     "state_unmoderated_caucus": "Unmoderated Caucus",
-    "state_speakers_list": "Speaker's List"
+    "state_speakers_list": "Speaker's List",
+    "search_placeholder": "Search",
+    "warnings_title": "Warnings"
 }

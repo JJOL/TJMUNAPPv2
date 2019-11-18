@@ -1,16 +1,4 @@
 
-// Speaker List Search Box 
-// onWarningsSearchResults()
-// function onWarnSR(result) {
-//     console.log('Warning to....');
-//     console.log(result);
-// }
-// prepareCountrySearcher('#w-country-searcher', onWarnSR);
-
-
-
-
-
 const { ipcRenderer } = require('electron');
 
 const storage  = require('../../storage');
@@ -24,6 +12,7 @@ const SpeakerListComponent = components.SpeakerListComponent;
 const TitleComponent = require('../common/components/title');
 const MultiLabelInfoComponent = require('../common/components/info').MultiLabelInfoComponent;
 const StateInfoComponent = require('../common/components/info').StateInfoComponent;
+const WarningsComponent = components.WarningsComponent;
 
 let backBtn, imageFlagCont, timerCont, speakerListCont, titleCont, topicsCont, chairsCont, stateCont, warningsCont;
 
@@ -56,7 +45,7 @@ function init () {
     stateCont  = new StateInfoComponent('#sessionState-component', language, unStateStrMap, 'ROLL_CALLING', unsession.state);
 
     // Warnings
-    // warningsCont = new WarningsComponent('warnings-component', language, delegates, unsession.warnings);
+    warningsCont = new WarningsComponent('#warnings-component', language, delegates, unsession.warnings);
 
     timerCont.onDefaultTimeChanged((newDefTime) => {
         unsession.defaultTime = newDefTime;
@@ -93,12 +82,12 @@ function init () {
         storage.setObj('s-'+sId+'-data', unsession);
     });
 
-    // warningsCont.onInfoChange((newInfo) => {
-    //     unsession.warnings = newInfo;
-    //     storage.setObj('s-'+sId+'-data', unsession);
-    // });   
+    warningsCont.onInfoChange((newInfo) => {
+        unsession.warnings = newInfo;
+        storage.setObj('s-'+sId+'-data', unsession);
+    });   
 
-    let backBtn = document.getElementById('back-btn');
+    backBtn = document.getElementById('back-btn');
     backBtn.addEventListener('click', () => {
         ipcRenderer.send('goto-view', 'menu');
     });

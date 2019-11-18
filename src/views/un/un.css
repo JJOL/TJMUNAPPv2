@@ -38,7 +38,7 @@ li {
     padding-bottom: 10px;
 }
 
-#page-container .row {
+#page-container > .row {
     height: 100%;
 }
 
@@ -161,7 +161,19 @@ li {
 
 #warnings-component {
     margin-top: 10px;
-    flex-grow: 1;
+    flex: 1 1 auto;
+}
+
+#warnings-component li {
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+    margin: 0;
+    display: flex;
+}
+
+#warnings-component li .col {
+    padding: 0;
+    margin: 0;
 }
 
 .warnings-marks {
