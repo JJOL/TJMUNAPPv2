@@ -1,12 +1,13 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     display: flex;
     flex-flow: column;
     height: 100vh;
 }
 
-div {
-    /* border: 1px dashed #AAA; */
-}
 
 .scrollable {
     overflow-y: scroll;
@@ -101,14 +102,19 @@ li {
 
 
 #speakerList-component {
-    /* display: flex;
-    flex-flow: column; */
-    /* flex-grow: 1; */
     flex: 1 1 auto;
 }
 #speakerList-component .panel {
     height: 100%;
     display: none;
+}
+
+#speakerList-component .action-controls {
+    display: flex;
+    flex-flow: row;
+}
+#speakerList-component .action-controls * {
+    flex: 1 1 auto;
 }
 #speakerList-component .panel.active {
     display: block;
@@ -116,6 +122,10 @@ li {
 
 #speakerList-component ol li.active {
     background: #7dacf4;
+}
+
+#speakerList-component #search-results li:hover {
+    cursor: pointer;
 }
 
 
@@ -133,6 +143,10 @@ li {
     text-align: center;
     font-size: 1.2em;
     border: 2px #084688 solid;
+}
+
+.info-box:hover, .state-box:hover {
+    cursor: pointer;
 }
 
 .info-box h3 {
