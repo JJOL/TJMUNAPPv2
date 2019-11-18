@@ -1,0 +1,18 @@
+{
+    "timer_start_btn": "Iniciar",
+    "timer_stop_btn": "Parar",
+    "timer_set_btn": "Establecer",
+    "speakerlist_add_btn": "Añadir",
+    "speakerlist_clear_btn": "Limpiar",
+    "speakerlist_next_btn": "Siguiente",
+    "speakerlist_back_btn": "Atras",
+    "topics_title": "Temas",
+    "chairs_title": "Moderadores",
+    "state_roll_calling": "Pase de Lista",
+    "state_draft_resolution": "Resolución de Borrador",
+    "state_moderated_caucus": "Reunión Moderada",
+    "state_unmoderated_caucus": "Reunión no Moderada",
+    "state_speakers_list": "Lista de Oradores",
+    "search_placeholder": "Buscar",
+    "warnings_title": "Advertencias"
+}
