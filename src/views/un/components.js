@@ -30,6 +30,15 @@ class ImageFlagComponent {
 
 module.exports.ImageFlagComponent = ImageFlagComponent;
 
+class TitleComponent {
+    constructor(elId, language, sessionName) {
+        this.container = document.querySelector(elId);
+        this.container.querySelector('h2').innerHTML = sessionName;
+    }
+}
+
+module.exports.TitleComponent = TitleComponent;
+
 class SpeakerListComponent {
     constructor(elId, language, delegates, savedSpeakers) {
         this.container = document.querySelector(elId);

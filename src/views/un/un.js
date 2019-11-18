@@ -531,9 +531,10 @@ const Language = require('../../languages');
 const language = new Language(__dirname);
 
 const components = require('./components');
-const ImageFlagComponent = components.ImageFlagComponent;
+const ImageFlagComponent = require('../common/components/imageflag');
 const TimerComponent     = require('../common/components/timer');
 const SpeakerListComponent = components.SpeakerListComponent;
+const TitleComponent = require('../common/components/title');
 let backBtn, imageFlagCont, timerCont, speakerListCont, titleCont, topicsCont, chairsCont, stateCont, warningsCont;
 
 function init () {
@@ -552,7 +553,7 @@ function init () {
     speakerListCont = new SpeakerListComponent('#speakerList-component', language, delegates, unsession.savedSpeakers);
 
     // Info
-    // titleCont  = new TitleComponent('title-component', language, meta.name);
+    titleCont  = new TitleComponent('#title-component', language, meta.name);
     // topicsCont = new MultiLabelInfoComponent('topics-component', language, unsession.topics);
     // chairsCont = new MultiLabelInfoComponent('chairs-component', language, unsession.chairs);
     // stateCont  = new StateInfoComponent('sessionState-component', language, unsession.state);
