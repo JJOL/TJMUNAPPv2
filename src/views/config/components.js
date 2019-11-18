@@ -264,16 +264,16 @@ class DelegatesComponent {
                 }
 
                 this.delegates = [];
-
+                let i = 1;
                 for (let file of files) {
                     console.log(file)
                     this.delegates.push({
+                        id: i,
                         name: this.cleanExtension(file),
                         path: (directory+'\\'+file)
                     });
 
-                    // PUT DELEGATE NAME IN DELEGATES CONTAINER
-                    // SET DELEGATE IMG SRC TO PATH
+                    i++;
                 }
 
                 storage.setObj('delegates-list', this.delegates);

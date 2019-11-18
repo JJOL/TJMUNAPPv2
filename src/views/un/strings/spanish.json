@@ -1,3 +1,5 @@
 {
-    
+    "timer_start_btn": "Iniciar",
+    "timer_stop_btn": "Parar",
+    "timer_set_btn": "Establecer"
 }

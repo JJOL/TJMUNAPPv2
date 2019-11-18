@@ -1,3 +1,5 @@
 {
-    
+    "timer_start_btn": "Start",
+    "timer_stop_btn": "Stop",
+    "timer_set_btn": "Set"
 }
