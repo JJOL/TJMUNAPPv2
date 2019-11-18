@@ -1,142 +1,4 @@
 
-
-// /* Info Boxes */
-// function prepareInfoBox(updateFn) {
-//     return function() {
-//         var open = false;
-//         var jthis = this;
-//         var title = $(jthis).find('h3');
-//         var front = $(jthis).find('.front-section');
-//         var back = $(jthis).find('.back-section');
-//         back.hide();
-
-//         $(jthis).click(function() {
-//             if (open) return;
-//             console.log("Out")
-//             back.show();
-//             front.hide();
-//         });
-
-//         back.find('#add-btn').click(function() {
-            
-//             var le = $('<li></li>').html('<input type="text"><button>X</button>');
-//             le.find('button').click(function(ev) {
-//                 $(ev.target).parent().remove();
-//             });
-//             le.find('input').keypress(function(ev) {
-//                 if (ev.key === "Enter")
-//                     closeInfoBox();
-//             });
-//             back.find('ul').append(le);
-//         });
-
-//         back.find('#ok-btn').click(function() {
-//             event.stopPropagation();
-//             console.log("In")
-//             closeInfoBox();
-//         });
-
-//         function closeInfoBox() {
-//             updateFn(jthis);
-//             back.hide();
-//             front.show();
-//             open = false;
-//         }
-
-//         // function update() {
-//         //     var htmlStr = '';
-//         //     back.find('input').each(function() {
-//         //         htmlStr += '<li>'
-//         //                 + $(this).val()
-//         //                 +  '</li>';
-//         //     });
-//         //     front.find('ul').html(htmlStr);
-//         // }
-//     }
-// }
-
-
-// /* Regular Listing Info Boxes! */
-
-// function listsUpdate(jthis) {
-//     var htmlStr = '';
-//     var front = $(jthis).find('.front-section');
-//     var back = $(jthis).find('.back-section');
-//     back.find('input').each(function() {
-//         htmlStr += '<li>'
-//                 + $(this).val()
-//                 +  '</li>';
-//     });
-//     front.find('ul').html(htmlStr);
-// }
-// $('.info-box').each(prepareInfoBox(listsUpdate));
-
-// /* State Info Box! */
-
-// function stateUpdate(jthis) {
-//     var htmlStr = '';
-//     var front = $(jthis).find('.front-section');
-//     var back = $(jthis).find('.back-section');
-//     htmlStr = back.find('select').val();
-//     front.find('h3').text(htmlStr);
-// }
-// $('.state-box').each(prepareInfoBox(stateUpdate));
-
-
-// $('.info-box').each(function() {
-//     var open = false;
-//     var title = $(this).find('h3');
-//     var front = $(this).find('.front-section');
-//     var back = $(this).find('.back-section');
-//     back.hide();
-
-//     $(this).click(function() {
-//         if (open) return;
-//         console.log("Out")
-//         back.show();
-//         front.hide();
-//     });
-
-//     back.find('#add-btn').click(function() {
-        
-//         var le = $('<li></li>').html('<input type="text"><button>X</button>');
-//         le.find('button').click(function(ev) {
-//             $(ev.target).parent().remove();
-//         });
-//         le.find('input').keypress(function(ev) {
-//             if (ev.key === "Enter")
-//                 closeInfoBox();
-//         });
-//         back.find('ul').append(le);
-//     });
-
-//     back.find('#ok-btn').click(function() {
-//         event.stopPropagation();
-//         console.log("In")
-//         closeInfoBox();
-//     });
-
-//     function closeInfoBox() {
-//         update();
-//         back.hide();
-//         front.show();
-//         open = false;
-//     }
-
-//     function update() {
-//         var htmlStr = '';
-//         back.find('input').each(function() {
-//             htmlStr += '<li>'
-//                        + $(this).val()
-//                     +  '</li>';
-//         });
-//         front.find('ul').html(htmlStr);
-//     }
-// });
-
-/* State Boxes */
-
-
 // Speaker List Search Box 
 // onWarningsSearchResults()
 // function onWarnSR(result) {
@@ -161,6 +23,7 @@ const TimerComponent     = require('../common/components/timer');
 const SpeakerListComponent = components.SpeakerListComponent;
 const TitleComponent = require('../common/components/title');
 const MultiLabelInfoComponent = require('../common/components/info').MultiLabelInfoComponent;
+const StateInfoComponent = require('../common/components/info').StateInfoComponent;
 
 let backBtn, imageFlagCont, timerCont, speakerListCont, titleCont, topicsCont, chairsCont, stateCont, warningsCont;
 
@@ -183,7 +46,14 @@ function init () {
     titleCont  = new TitleComponent('#title-component', language, meta.name);
     topicsCont = new MultiLabelInfoComponent('#topics-component', language, unsession.topics);
     chairsCont = new MultiLabelInfoComponent('#chairs-component', language, unsession.chairs);
-    // stateCont  = new StateInfoComponent('sessionState-component', language, unsession.state);
+    let unStateStrMap = {
+        ROLL_CALLING: 'state_roll_calling',
+        DRAFT_RESOLUTION: 'state_draft_resolution',
+        MODERATED_CAUCUS: 'state_moderated_caucus',
+        UNMODERATED_CAUCUS: 'state_unmoderated_caucus',
+        SPEAKERS_LIST: 'state_speakers_list'
+    };
+    stateCont  = new StateInfoComponent('#sessionState-component', language, unStateStrMap, 'ROLL_CALLING', unsession.state);
 
     // Warnings
     // warningsCont = new WarningsComponent('warnings-component', language, delegates, unsession.warnings);
@@ -218,10 +88,10 @@ function init () {
         storage.setObj('s-'+sId+'-data', unsession);
     });
 
-    // stateCont.onInfoChange((newInfo) => {
-    //     unsession.state = newInfo;
-    //     storage.setObj('s-'+sId+'-data', unsession);
-    // });
+    stateCont.onInfoChange((newInfo) => {
+        unsession.state = newInfo;
+        storage.setObj('s-'+sId+'-data', unsession);
+    });
 
     // warningsCont.onInfoChange((newInfo) => {
     //     unsession.warnings = newInfo;
