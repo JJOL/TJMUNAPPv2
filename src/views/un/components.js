@@ -1,16 +1,6 @@
 const translateStaticElements = require('../common/js/language-utils').translateStaticElements;
 
-function _getMatching(query, delegates) {
-    let matching = [];
-    query = query.toLowerCase();
-    for (let del of delegates) {
-        let testName = del.name.toLowerCase();
-        if (testName.startsWith(query)) {
-            matching.push(del);
-        }
-    }
-    return matching;
-}
+const _getMatching = require('../common/js/string-utils')._getMatching;
 
 class SpeakerListComponent {
     constructor(elId, language, delegates, savedSpeakers) {

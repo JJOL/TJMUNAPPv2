@@ -12,7 +12,7 @@ const SpeakerListComponent = components.SpeakerListComponent;
 const TitleComponent = require('../common/components/title');
 const MultiLabelInfoComponent = require('../common/components/info').MultiLabelInfoComponent;
 const StateInfoComponent = require('../common/components/info').StateInfoComponent;
-const WarningsComponent = components.WarningsComponent;
+const WarningsComponent = require('../common/components/warnings');
 
 let backBtn, imageFlagCont, timerCont, speakerListCont, titleCont, topicsCont, chairsCont, stateCont, warningsCont;
 
