@@ -547,7 +547,7 @@ function init () {
 
 
     // Speaker List and Timer
-    imageFlagCont = new ImageFlagComponent('#flagImg-component', UN_FLAG_IMG_PATH, unsession.imgFlagPath)
+    imageFlagCont = new ImageFlagComponent('#flagImg-component', language, UN_FLAG_IMG_PATH, unsession.imgFlagPath)
     timerCont = new TimerComponent('#timer-component', language, unsession.defaultTime);
     speakerListCont = new SpeakerListComponent('#speakerList-component', language, delegates, unsession.savedSpeakers);
 
@@ -566,13 +566,13 @@ function init () {
     });
 
     speakerListCont.onCurrentSpeakerChanged((delegate) => {
-        console.log(delegate);
-        
         if (delegate) {
-            imageFlagCont.setCurrentImage(delegate.path);
+            unsession.imgFlagPath = delegate.path;
         } else {
-            imageFlagCont.setCurrentImage(null);
+            unsession.imgFlagPath = UN_FLAG_IMG_PATH;
         }
+        imageFlagCont.setCurrentImage(unsession.imgFlagPath);
+        storage.setObj('s-'+sId+'-data', unsession);
     });
 
     speakerListCont.onSpeakerListChanged((speakers) => {

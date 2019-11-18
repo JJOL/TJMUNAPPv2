@@ -13,15 +13,18 @@ class ImageFlagComponent {
     }
 
     render() {
-        this.src = this.currentImgPath;
+        this.container.src = this.currentImgPath;
     }
 
     setCurrentImage(currentImgPath) {
+        console.log(currentImgPath);
+        
         if (currentImgPath) {
             this.currentImgPath = currentImgPath;
         } else {
             this.currentImgPath = this.formatFlagPath;
         }
+        this.render();
     }
 }
 
@@ -194,7 +197,12 @@ class SpeakerListComponent {
         let found = false;
         let speakers = this.speakers;
         let speakerIndex = -1;
+        let firstNotPassed = -1;
         for (let i = 0; i < speakers.length; i++) {
+            if (!speakers[i].passed && firstNotPassed == -1) {
+                firstNotPassed = i;
+            }
+
             if (speakers[i].active) {                
                 speakers[i].active = false;
                 speakers[i].passed = true;
@@ -208,9 +216,9 @@ class SpeakerListComponent {
             }
         }
 
-        if (!found && speakers.length > 0) {
-            speakers[0].active = true;
-            speakerIndex = 0;
+        if (!found && firstNotPassed != -1) {
+            speakers[firstNotPassed].active = true;
+            speakerIndex = firstNotPassed;
         }
 
         this.setSpeakerList(this.speakers);
