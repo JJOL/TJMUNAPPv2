@@ -83,6 +83,7 @@ class MultiLabelInfoComponent {
 
     addItemInput() {
         this.items.push('');
+        this.saveInfoData();
         this.render();
     }
 
@@ -94,11 +95,7 @@ class MultiLabelInfoComponent {
         this.render();
     }
 
-    closeInput() {
-        this.backCont.style.display = 'none';
-        this.frontCont.style.display = 'block';
-        this.isOpen = false;
- 
+    saveInfoData() {
         let inputs = Array.from(this.backList.querySelectorAll('input'));
         for (let i=0; i < inputs.length; i++) {
             this.items[i] = inputs[i].value;
@@ -107,6 +104,14 @@ class MultiLabelInfoComponent {
         if (this.fn) {
             this.fn(this.items);
         }
+    }
+
+    closeInput() {
+        this.backCont.style.display = 'none';
+        this.frontCont.style.display = 'block';
+        this.isOpen = false;
+ 
+        this.saveInfoData();
 
         this.render();
     }
