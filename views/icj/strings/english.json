@@ -1,0 +1,14 @@
+{
+    "timer_start_btn": "Start",
+    "timer_stop_btn": "Stop",
+    "timer_set_btn": "Set",
+    "chairs_title": "Chairs",
+    "defense_title": "Defense",
+    "prosecution_title": "Prosecution",
+    "state_moderated_caucus": "Moderated Caucus",
+    "state_witness_presentation": "Witness Presentation",
+    "state_evidence_presentation": "Evidence Presentation",
+    "state_judicial_query": "Judicial Query",
+    "state_opening_statement": "Opening Statement",
+    "state_closing_statement": "Closing Statement"
+}

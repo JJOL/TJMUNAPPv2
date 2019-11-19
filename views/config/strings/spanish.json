@@ -1,0 +1,16 @@
+{
+    "lock_title": "Protección",
+    "languages_title": "Idiomas",
+    "delegates_title": "Delegados",
+    "sessions_title": "Sessions",
+    "lock_password_label": "Constraseña: ",
+    "lock_lock_btn": "Bloquear",
+    "lock_unlock_btn": "Desbloquear",
+    "delegates_load_btn": "Cargar Delegados",
+    "session_add_name_label": "Nombre: ",
+    "session_add_format_label": "Formato: ",
+    "session_add_btn": "Añadir",
+    "session_active": "Activo",
+    "session_delete_btn": "Borrar",
+    "session_active_btn": "Establecer Actual"
+}

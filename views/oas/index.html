@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../common/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="oas.css">
+    <title>OAS Interface</title>
+</head>
+<body>
+    <nav class="bg-dark">
+        <div id="back-btn"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+    </nav>
+    <div class="container" id="page-container"> 
+        <div class="row">
+            <!-- Column 1 -->
+            <div class="col-4 filler-col">
+                <!-- UN Committee Flag -->
+                <img id="flagImg-component" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_the_United_Nations.svg/2000px-Flag_of_the_United_Nations.svg.png" alt="UN Flag" width="100%" class="flag-img">
+                <br>
+
+                <!-- A Timer -->
+                <h2 data-strname="timer_speaker_1">Speaker 1</h2>
+                <div id="timer-a-component" class="ui-component timer-component">
+                    <span id="def-time">Default: 00:00</span>
+                    <input type="number" id="min-in" class="back-input" min="0", max="59">
+                    <input type="number" id="sec-in" class="back-input" min="0", max="59">
+                    <button id="in-check" class=back-input>Ok</button>
+                    <span id="time-lbl">10:00s</span>
+                    <button id="time-stt-btn" data-strname='timer_start_btn'>Start</button>
+                    <button id="time-stp-btn" data-strname='timer_stop_btn'>Stop</button>
+                    <button id="time-set-btn" data-strname='timer_set_btn'>Set</button>
+                </div>
+
+                <!-- B Timer -->
+                <h2 data-strname="timer_speaker_2">Speaker 2</h2>
+                <div id="timer-b-component" class="ui-component timer-component">
+                    <span id="def-time">Default: 00:00</span>
+                    <input type="number" id="min-in" class="back-input" min="0", max="59">
+                    <input type="number" id="sec-in" class="back-input" min="0", max="59">
+                    <button id="in-check" class=back-input>Ok</button>
+                    <span id="time-lbl">10:00s</span>
+                    <button id="time-stt-btn" data-strname='timer_start_btn'>Start</button>
+                    <button id="time-stp-btn" data-strname='timer_stop_btn'>Stop</button>
+                    <button id="time-set-btn" data-strname='timer_set_btn'>Set</button>
+                </div>
+
+
+                <!-- UN Speaker List -->
+                <!-- <div id="speakerList-component" class="ui-component">
+                    <div id="speaker-list-container" class="panel active">
+                        <ol class="list-group scrollable" id="speaker-list">
+                        </ol>
+                        <div class='action-controls'>
+                            <button data-strname="speakerlist_add_btn" id='sp-add-btn'>Add</button>
+                            <button data-strname="speakerlist_clear_btn" id='sp-clear-btn'>Clear</button>
+                            <button data-strname="speakerlist_next_btn" id='sp-next-btn'>Next</button>
+                        </div>
+                    </div>
+                    <div id="add-searcher-container" class="panel">
+                        <div class="input-group margin-bottom-sm">
+                            <input id="sp-input" class="form-control" type="text" placeholder="&#xf002;" style="font-family:Arial, FontAwesome">
+                        </div>
+                        <ul class="list-group scrollable" id="search-results">
+                        </ul>
+                        <div class='action-controls'>
+                            <button data-strname="speakerlist_back_btn" id='sp-back-btn'>Back</button>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+            <!-- Column 2 -->
+            <div class="col-4">
+                <hr>
+                <div id="title-component">
+                    <h2>UN Security Council</h2>
+                </div>
+                <hr>
+                <div id="topics-component" class="info-box">
+                    <h3 data-strname="topics_title">Topics</h3>
+                    <div class="front-section">
+                        <ul></ul>
+                    </div>
+                    <div class="back-section">
+                        <ul></ul>
+                        <button id="add-btn">Add</button>
+                        <button id="ok-btn">Ok</button>
+                    </div>
+                </div>
+                <hr>
+                <div id="subtopics-component" class="info-box">
+                        <h3 data-strname="subtopics_title">Topics</h3>
+                        <div class="front-section">
+                            <ul></ul>
+                        </div>
+                        <div class="back-section">
+                            <ul></ul>
+                            <button id="add-btn">Add</button>
+                            <button id="ok-btn">Ok</button>
+                        </div>
+                    </div>
+                <hr>
+                <div id="chairs-component" class="info-box">
+                    <h3 data-strname="chairs_title">Chairs</h3>
+                    <div class="front-section">
+                        <ul></ul>
+                    </div>
+                    <div class="back-section">
+                        <ul></ul>
+                        <button id="add-btn">Add</button>
+                        <button id="ok-btn">Ok</button>
+                    </div>
+                </div>
+                <hr>
+                <div id="sessionState-component" class="state-box">
+                    <div class="front-section">
+                            <h3>Moderated Caucus</h3>
+                    </div>
+                    <div class="back-section">
+                        <select name="" id="state-input">
+                            <option value="Roll Calling">Roll Calling</option>
+                            <option value="Draft Resolution">Draft Resolution</option>
+                            <option value="Unmoderated Caucus">Unmoderated Caucus</option>
+                            <option value="Moderated Caucus">Moderated Caucus</option>
+                            <option value="Speaker's List">Speaker's List</option>
+                        </select>
+                        <button id="ok-btn">Ok</button>
+                    </div>
+                </div>
+
+                <!-- <footer>
+                    <div>TJMUNQRO</div>
+                    <div>Juan José Olivera Loyola</div>
+                </footer> -->
+            </div>
+            <!-- Column 3 -->
+            <div class="col-4 filler-col">
+                <div class="logos-container ui-component">
+                </div>
+                <div id='warnings-component' class="ui-component">
+                    <h3 data-strname="warnings_title">Warnings</h3>
+                    <div class="input-group margin-bottom-sm">
+                        <input id="wg-input" class="form-control" type="text" placeholder="&#xf002;" style="font-family:Arial, FontAwesome">
+                    </div>
+                    <ul id='warnings-list' class="list-group scrollable">
+                    </ul>
+                    
+                </div>
+        </div>
+    </div>
+    <script>
+        if (typeof module === 'object') { 
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+    <script src="oas.js"></script>
+    <script>init();</script>
+    <script>
+        if (window.module) {
+            module = window.module;
+        }
+    </script>
+</body>
+</html>
