@@ -94,15 +94,33 @@ class SpeakerListComponent {
 
     renderSpeakers() {
         let htmlStr = '';
-        let i = 1;
-        for (let speaker of this.speakers) {
-            let disableClass = speaker.passed ? ' disabled' : '';
-            let activeClass = speaker.active ? ' active' : '';
-            htmlStr += `<li class="list-group-item${disableClass}${activeClass}">${i}. ${speaker.name}</li>`;
-            i++;
+        this.speakerList.innerHTML = '';
+        for (let i=0; i < this.speakers.length; i++) {
+            let speaker = this.speakers[i];
+            let disableClass = speaker.passed ? 'disabled' : null;
+            let activeClass = speaker.active ? 'active' : null;
+            let liEl = document.createElement('li');
+            liEl.classList.add('list-group-item');
+            if (disableClass) liEl.classList.add(disableClass);
+            if (activeClass) liEl.classList.add(activeClass);
+
+            let txt = document.createTextNode(`${i+1}. ${speaker.name}`);
+
+            let delEl = document.createElement('span');
+            delEl.innerHTML = 'X';
+            delEl.classList.add('del-btn');
+            delEl.addEventListener('click', () => {
+                this.removeSpeaker(i);
+            });
+
+            liEl.appendChild(txt);
+            liEl.appendChild(delEl);
+
+            this.speakerList.appendChild(liEl);
+            // htmlStr += `<li class="list-group-item${disableClass}${activeClass}">${i}. ${speaker.name} <span class="del-btn">X</span></li>`;
         }
         
-        this.speakerList.innerHTML = htmlStr;
+        // this.speakerList.innerHTML = htmlStr;
     }
 
     renderSearchResults() {
@@ -150,6 +168,9 @@ class SpeakerListComponent {
 
     selectOption(resultIndex) {
         let result = this.resultDelegates[resultIndex];
+        if (result.active) {
+            delete result.active;
+        }
         this.speakers.push(result);
         this.setSpeakerList(this.speakers);
     }
@@ -162,10 +183,21 @@ class SpeakerListComponent {
         this.render();
     }
 
-    clearSpeakerList() {
-        this.speakers = [];
+    removeSpeaker(speakerIndex) {
+        console.log(speakerIndex);
+        
+        this.speakers.splice(speakerIndex, 1);
         this.setSpeakerList(this.speakers);
         this.render();
+
+        this.forwardSpeakerList();
+    }
+
+    clearSpeakerList() {
+        this.setSpeakerList([]);
+        this.render();
+
+        this.forwardSpeakerList();
     }
 
     forwardSpeakerList() {
