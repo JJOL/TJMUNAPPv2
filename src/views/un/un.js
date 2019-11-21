@@ -18,7 +18,7 @@ let backBtn, imageFlagCont, timerCont, speakerListCont, titleCont, topicsCont, c
 
 function init () {
 
-    const UN_FLAG_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_the_United_Nations.svg/2000px-Flag_of_the_United_Nations.svg.png';
+    const UN_FLAG_IMG_PATH = '../common/assets/un_flag.png';
 
     let sId = storage.getObj('session-active', -1);
     let delegates = storage.getObj('delegates-activated', []);
