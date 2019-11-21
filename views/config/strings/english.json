@@ -12,5 +12,6 @@
     "session_add_btn": "Add",
     "session_active": "Active",
     "session_delete_btn": "Delete",
-    "session_active_btn": "Set Active"
+    "session_active_btn": "Set Active",
+    "session_create_lbl": "Create:"
 }

@@ -2,7 +2,7 @@
     "lock_title": "Protección",
     "languages_title": "Idiomas",
     "delegates_title": "Delegados",
-    "sessions_title": "Sessions",
+    "sessions_title": "Sesiones",
     "lock_password_label": "Constraseña: ",
     "lock_lock_btn": "Bloquear",
     "lock_unlock_btn": "Desbloquear",
@@ -12,5 +12,6 @@
     "session_add_btn": "Añadir",
     "session_active": "Activo",
     "session_delete_btn": "Borrar",
-    "session_active_btn": "Establecer Actual"
+    "session_active_btn": "Establecer Actual",
+    "session_create_lbl": "Crear:"
 }
