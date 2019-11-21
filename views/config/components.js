@@ -324,6 +324,7 @@ class LanguageComponent {
         for (let lang of languageList) {
             let langEl = document.createElement('div');
             langEl.classList.add('col-2', 'language', 'labeled-img');
+            if (this.language.getActiveLang() == lang.name) langEl.classList.add('active');
             langEl.id = lang.name;
             if (locked)
                 langEl.setAttribute('disabled', true );
