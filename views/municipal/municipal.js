@@ -18,8 +18,9 @@ let backBtn, imageFlagCont, timerCont, speakerListCont, titleCont, topicsCont, c
 
 function init () {
 
-    const MUNICIPAL_FLAG_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/1/18/Flag_of_Queretaro.svg';
-
+    const MUNICIPAL_FLAG_IMG_PATH = '../common/assets/queretaro_flag.svg';
+    console.log('QUE PEDO');
+    
     let sId = storage.getObj('session-active', -1);
     let delegates = storage.getObj('delegates-activated', []);
     let unsession = storage.getObj('s-'+sId+'-data', {});

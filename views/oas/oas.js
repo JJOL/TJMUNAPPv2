@@ -18,7 +18,7 @@ let backBtn, imageFlagCont, timerContA, timerContB, titleCont, topicsCont, subto
 
 function init () {
 
-    const OAS_FLAG_IMG_PATH = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_the_United_Nations.svg/2000px-Flag_of_the_United_Nations.svg.png';
+    const OAS_FLAG_IMG_PATH = '../common/assets/oas_flag.jpg';
 
     let sId = storage.getObj('session-active', -1);
     let delegates = storage.getObj('delegates-activated', []);

@@ -205,3 +205,7 @@ li {
 #page-container > .row {
     height: auto;
 }
+
+.side-logo {
+    width: 100%;
+}
