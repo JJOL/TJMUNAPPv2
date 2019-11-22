@@ -53,14 +53,22 @@ class SpeakerListComponent {
     }
 
     _calculateListsDimensions() {
-        let totalheight = this.speakerContainer.getBoundingClientRect().height;
-        let usedHeight  = this.speakerListCtrs.getBoundingClientRect().height;
+        let speakerContRect = this.speakerContainer.getBoundingClientRect();
+        let panelContRect = this.speakerListCtrs.getBoundingClientRect();
+
+        // Calculate Height
+        let totalheight = speakerContRect.height;
+        let usedHeight  = panelContRect.height;
 
         let leftHeight = Math.ceil(totalheight - usedHeight - 5);
         let searcherHeight = Math.ceil(leftHeight-usedHeight-5);
 
         this.speakerList.style.height = `${leftHeight}px`;
         this.resultsList.style.height = `${searcherHeight}px`;
+
+        // Calculate MidPoint
+        this.middleHeight = (leftHeight/2);
+        this.middleY = this.speakerList.getBoundingClientRect().y + this.middleHeight;
     }
 
     _getMatching(query, delegates) {
@@ -100,6 +108,7 @@ class SpeakerListComponent {
             let disableClass = speaker.passed ? 'disabled' : null;
             let activeClass = speaker.active ? 'active' : null;
             let liEl = document.createElement('li');
+            liEl.id = `sp-${i}`;
             liEl.classList.add('list-group-item');
             if (disableClass) liEl.classList.add(disableClass);
             if (activeClass) liEl.classList.add(activeClass);
@@ -206,6 +215,7 @@ class SpeakerListComponent {
         let speakerIndex = -1;
         let firstNotPassed = -1;
         for (let i = 0; i < speakers.length; i++) {
+            // 
             if (!speakers[i].passed && firstNotPassed == -1) {
                 firstNotPassed = i;
             }
@@ -235,6 +245,26 @@ class SpeakerListComponent {
         }
 
         this.renderSpeakers();
+
+        // SCROLL LIST
+        this.scrollToPresent(speakerIndex);
+    }
+
+    scrollToPresent(speakerIndex) {
+        if (speakerIndex === -1) {
+            return;
+        }
+
+        let spEl = this.speakerList.querySelector(`#sp-${speakerIndex}`);
+        let elY = spEl.getBoundingClientRect().y;
+        let elH = spEl.getBoundingClientRect().height -5;
+
+        if (elY > this.middleY) {
+            let dist =  elY - this.middleY;
+            console.log(dist);
+            
+            this.speakerList.scroll(0, this.speakerList.scrollTop +dist + elH);
+        }
     }
 
     onCurrentSpeakerChanged(fn) {
