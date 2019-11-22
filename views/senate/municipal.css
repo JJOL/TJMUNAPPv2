@@ -83,6 +83,10 @@ li {
     text-align: left;
 }
 
+#timer-component #def-time:hover {
+    cursor: pointer;
+}
+
 #min-in, #sec-in {
     width: 36%;
 }
