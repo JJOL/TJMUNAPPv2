@@ -19,13 +19,13 @@ function init () {
     let unsession = storage.getObj('s-'+sId+'-data', {});
     let meta      = storage.getObj('s-'+sId, {});
 
-    let icjMainStateStrMap = {
+    let iccMainStateStrMap = {
         MODERATED_CAUCUS: 'state_moderated_caucus',
         WITNESS_PRESENTATION: 'state_witness_presentation',
         EVIDENCE_PRESENTATION: 'state_evidence_presentation'
     };
 
-    let icjLawerStatesStrMap = {
+    let iccLawerStatesStrMap = {
         JUDICIAL_QUERY: 'state_judicial_query',
         OPENING_STATEMENT: 'state_opening_statement',
         CLOSING_STATEMENT: 'state_closing_statement'
@@ -36,15 +36,15 @@ function init () {
 
     // Main Session
     titleCont  = new TitleComponent('#title-component', language, meta.name);
-    sessionStateCont = new StateInfoComponent('#sessionState-component', language, icjMainStateStrMap, 'WITNESS_PRESENTATION', unsession.mainState);
+    sessionStateCont = new StateInfoComponent('#sessionState-component', language, iccMainStateStrMap, 'WITNESS_PRESENTATION', unsession.mainState);
     mainTimerCont = new TimerComponent('#mainTimer-component', language, unsession.defaultMainTime);
 
     // Defense 
-    defenseStateCont = new StateInfoComponent('#defenseState-component', language, icjLawerStatesStrMap, 'OPENING_STATEMENT', unsession.defenseState);
+    defenseStateCont = new StateInfoComponent('#defenseState-component', language, iccLawerStatesStrMap, 'OPENING_STATEMENT', unsession.defenseState);
     defenseTimerCont = new TimerComponent('#defenseTimer-component', language, unsession.defaultDefenseTime);
 
     // Prosecution
-    prosecutionStateCont = new StateInfoComponent('#prosecutionState-component', language, icjLawerStatesStrMap, 'OPENING_STATEMENT', unsession.prosecutionState);
+    prosecutionStateCont = new StateInfoComponent('#prosecutionState-component', language, iccLawerStatesStrMap, 'OPENING_STATEMENT', unsession.prosecutionState);
     prosecutionTimerCont = new TimerComponent('#prosecutionTimer-component', language, unsession.defaultProsecutionTime);
  
     // State Controllers
