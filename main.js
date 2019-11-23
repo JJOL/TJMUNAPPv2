@@ -9,6 +9,7 @@ function createWindow() {
         title: 'TJMUNv2',
         width: 800,
         height: 600,
+        icon: './views/common/assets/itj.ico',
         webPreferences: {
             nodeIntegration: true
             // allowRunningInsecureContent: false
