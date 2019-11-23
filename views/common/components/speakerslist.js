@@ -85,8 +85,10 @@ class SpeakerListComponent {
 
     setSpeakerList(speakers) {
         this.speakers = speakers;
+        let cleanSepakers = speakers.map(this.cleanedSpeaker);
+
         if (this.onSpeakerListChangefn) {
-            this.onSpeakerListChangefn(this.speakers);
+            this.onSpeakerListChangefn(cleanSepakers);
         }
     }
 
@@ -98,6 +100,16 @@ class SpeakerListComponent {
         }
 
         return false;
+    }
+
+    cleanedSpeaker(speaker) {
+        let copy = {};
+        Object.assign(copy, speaker);
+
+        // Remove Extra Parameters to Make it Clean
+        delete copy['active'];
+        
+        return copy;
     }
 
     renderSpeakers() {
@@ -177,10 +189,11 @@ class SpeakerListComponent {
 
     selectOption(resultIndex) {
         let result = this.resultDelegates[resultIndex];
+
         if (result.active) {
             delete result.active;
         }
-        this.speakers.push(result);
+        this.speakers.push(this.cleanedSpeaker(result));
         this.setSpeakerList(this.speakers);
     }
 
