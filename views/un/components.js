@@ -198,8 +198,6 @@ class SpeakerListComponent {
         this.speakers.splice(speakerIndex, 1);
         this.setSpeakerList(this.speakers);
         this.render();
-
-        this.forwardSpeakerList();
     }
 
     clearSpeakerList() {

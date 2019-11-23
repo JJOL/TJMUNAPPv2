@@ -63,7 +63,7 @@ li {
 
 .flag-img {
     border: 2px #084688 solid;
-    height: 228px;
+    height: 200px;
 }
 
 .timer-component {
@@ -169,7 +169,8 @@ li {
 }
 
 .logos-container {
-    width: 100%;
+    margin: 0 auto;
+    width: 90%;
     height: 228px;
     background: url('../common/assets/mun_logo.jpg');
     background-size: 100% 100%;
@@ -199,10 +200,10 @@ li {
     display: inline-block;
 }
 
-footer {
+footer {   
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 20px;
+    right: 20px;
     bottom: 20px;
 }
 
