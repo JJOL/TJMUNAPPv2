@@ -5,10 +5,9 @@ const storage  = require('../../storage');
 const Language = require('../../languages');
 const language = new Language(__dirname);
 
-const components = require('../un/components');
 const ImageFlagComponent = require('../common/components/imageflag');
 const TimerComponent     = require('../common/components/timer');
-const SpeakerListComponent = components.SpeakerListComponent;
+const SpeakerListComponent = require('../common/components/speakerslist');
 const TitleComponent = require('../common/components/title');
 const MultiLabelInfoComponent = require('../common/components/info').MultiLabelInfoComponent;
 const StateInfoComponent = require('../common/components/info').StateInfoComponent;
