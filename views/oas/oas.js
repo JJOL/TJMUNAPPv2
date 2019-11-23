@@ -12,6 +12,9 @@ const MultiLabelInfoComponent = require('../common/components/info').MultiLabelI
 const StateInfoComponent = require('../common/components/info').StateInfoComponent;
 const WarningsComponent = require('../common/components/warnings');
 
+const ClockComponent = require('../common/components/clock');
+
+
 const translateStaticElements = require('../common/js/language-utils').translateStaticElements;
 
 let backBtn, imageFlagCont, timerContA, timerContB, titleCont, topicsCont, subtopicsCont, chairsCont, stateCont, warningsCont;
@@ -45,6 +48,8 @@ function init () {
     subtopicsCont = new MultiLabelInfoComponent('#subtopics-component', language, unsession.subtopics);
     chairsCont = new MultiLabelInfoComponent('#chairs-component', language, unsession.chairs);
     stateCont  = new StateInfoComponent('#sessionState-component', language, oasStateStrMap, 'MODERATED_CAUCUS', unsession.state);
+
+    clockCont = new ClockComponent('#clock-component', language);
 
     // Warnings
     warningsCont = new WarningsComponent('#warnings-component', language, delegates, unsession.warnings);

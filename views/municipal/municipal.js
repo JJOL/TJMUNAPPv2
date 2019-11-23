@@ -13,6 +13,9 @@ const MultiLabelInfoComponent = require('../common/components/info').MultiLabelI
 const StateInfoComponent = require('../common/components/info').StateInfoComponent;
 const WarningsComponent = require('../common/components/warnings');
 
+const ClockComponent = require('../common/components/clock');
+
+
 let backBtn, imageFlagCont, timerCont, speakerListCont, titleCont, topicsCont, chairsCont, stateCont, warningsCont;
 
 function init () {
@@ -42,6 +45,8 @@ function init () {
         SPEAKERS_LIST: 'state_speakers_list'
     };
     stateCont  = new StateInfoComponent('#sessionState-component', language, unStateStrMap, 'ROLL_CALLING', unsession.state);
+
+    clockCont = new ClockComponent('#clock-component', language);
 
     // Warnings
     warningsCont = new WarningsComponent('#warnings-component', language, delegates, unsession.warnings);
