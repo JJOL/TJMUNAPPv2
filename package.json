@@ -1,7 +1,7 @@
 {
   "name": "tjmunappv2",
   "productName": "TJMUNv2",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TJMUNQro 2019 Committee Managing App",
   "main": "main.js",
   "scripts": {
