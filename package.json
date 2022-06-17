@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/JJOL/TJMUNAPPv2#readme",
   "devDependencies": {
-    "electron": "^7.0.0",
+    "electron": "^15.5.5",
     "electron-packager": "^14.1.0"
   }
 }
